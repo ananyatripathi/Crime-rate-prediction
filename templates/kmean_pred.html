@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<!--
+	Be by TEMPLATE STOCK
+	templatestock.co @templatestock
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>K-Means</title>
+
+    <!-- =============== Bootstrap Core CSS =============== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/bootstrap.min.css') }}" type="text/css">
+    <!-- =============== fonts awesome =============== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/font/css/font-awesome.min.css') }}" type="text/css">
+    <!-- =============== Plugin CSS =============== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/animate.min.css') }}" type="text/css">
+    <!-- =============== Custom CSS =============== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/style.css') }}" type="text/css">
+    <!-- =============== Owl Carousel Assets =============== -->
+    <link href="{{ url_for('static', filename = 'assets/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'assets/owl-carousel/owl.theme.css') }}" rel="stylesheet">
+	
+	 <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/isotope-docs.css') }}" media="screen">
+	  <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/baguetteBox.css') }}">
+
+      
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+</head>
+
+<body>
+    <!-- =============== Preloader =============== -->
+    <div id="preloader">
+        <div id="loading">
+		<img width="256" height="32" src="{{ url_for('static', filename = 'assets/img/loading-cylon-red.svg') }}">	
+        </div>
+    </div>
+    <!-- =============== nav =============== -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- <a class="navbar-brand" href="#"><img src="assets/img/logo.png" alt="Logo"> -->
+						<h1 class="wow bounceIn animated" data-wow-delay=".40s" style="color:white; font-size:65px; margin-top:25px">CRIME RATE PREDICTION</h1>
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+						<li>
+                            <a class="page-scroll" href="{{url_for('home')}}">Home</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- =============== navbar-collapse =============== -->
+
+            </div>
+        </div>
+        <!-- =============== container-fluid =============== -->
+    </nav>
+    <!-- =============== header =============== -->
+    <header id="home" class="header">
+		<!-- =============== container =============== -->
+        <div class="container" >
+            <div class="header-content row" style="margin-top:100px">
+				 <div>
+				  <div class="col-xs-12 col-sm-6 col-md-6 header-text">
+                    <h2 class="wow bounceIn animated" data-wow-delay=".40s">PREDICTION USING <br> <span>K-MEANS</span></h2>
+                  
+					</div>               
+				</div>
+				</div>				 
+				</div>
+        </div>
+		<!-- =============== container end =============== -->
+    </header>
+
+
+
+
+
+    <section id="about" class="">
+        <!-- =============== container =============== -->
+        <div class="container">            
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 wow fadeInDown animated" data-wow-delay=".5s">
+                   <h2>About Us</h2>
+                   <p>K-Means Clustering is a popular unsupervised learning algorithm that divides the unlabeled dataset into various clusters. K is the number of predetermined clusters that must be produced during the procedure; for example, if K=2, there will be two clusters, K = 3, three clusters, and so on.</p>
+
+                    <p>It allows us to cluster the data into different groups and a convenient way to discover the categories of groups in the unlabeled dataset on its own without the need for any training.
+
+                        It is a centroid-based algorithm, where each cluster is associated with a centroid. The main aim of this algorithm is to minimize the sum of distances between the data point and their corresponding clusters.</p>
+                        <p>In our project. We have put the value of K = 4 as we have defined the rate of crime type in 4 categories that is Very High, High, Medium, and Low.    </p>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-6 wow fadeInRight animated" data-wow-delay=".5s">
+                     <img style="height:500px; width:800px; margin-top:50px" src="{{ url_for('static', filename = 'assets/img/crime2.jpg') }}"/>               
+                  </div>     
+            </div>
+        </div>   
+        <!-- =============== container end =============== -->		
+    </section>
+    
+    
+    <section id="Services" class="" style="margin-top:80px; margin-bottom:80px">
+        <!-- =============== container =============== -->
+        <div class="container">            
+            <div class="row">
+                <div class="container">            
+                    <div class="row">
+                    <form method = "post" action = "/kmean_pred">
+                        
+
+                        <br>
+
+                        <div class="form-group col-md-1">
+                            <label for="inputZip">Murder</label>
+                            <input type="text" class="form-control" name="murder">
+                          </div>
+
+                          <div class="form-group col-md-1">
+                            <label for="inputZip">Robbery</label>
+                            <input type="text" class="form-control" name="robbery">
+                          </div>
+
+                          <div class="form-group col-md-1">
+                            <label for="inputZip">Rape</label>
+                            <input type="text" class="form-control" name="rape">
+                          </div>
+
+                          <div class="form-group col-md-1">
+                            <label for="inputZip">Accident</label>
+                            <input type="text" class="form-control" name="accident">
+                          </div>
+
+                          <div class="form-group col-md-1">
+                            <label for="inputZip">Kidnap</label>
+                            <input type="text" class="form-control" name="kidnap">
+                          </div>
+
+                          <div class="form-group col-md-1">
+                            <label for="inputZip">Dowry</label>
+                            <input type="text" class="form-control" name="dowry">
+                          </div>
+
+                          <div class="form-group col-md-1">
+                            <label for="inputZip">Suicide</label>
+                            <input type="text" class="form-control" name="suicide">
+                          </div>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+
+                        <p >
+                        
+                        <input class="btn btn-primary btn-lg btn-ornge wow bounceIn animated" style="background-color:black;" data-wow-delay="1s" type = "submit" value = "Submit">
+                        </p>
+                        
+                        
+                        </form>
+                               
+                    </div>      
+                </div>
+             
+                 
+            </div>
+        </div>   
+        <!-- =============== container end =============== -->		
+    </section>
+    
+    
+    
+    <section class="counter">
+        <!-- =============== container =============== -->
+        <div class="container">            
+            <div class="row">
+
+            <div class="title" >
+                <h2>RESULTS</h2>				
+            </div>
+            <div style="display:flex; justify-content:center">
+             
+
+                <div class="wow fadeInUp animated" data-wow-delay=".1s">
+                    <i class="fa fa-clock-o size"></i>
+                    <h2>{{murder}}</h2>
+                    <span>Murder</span>
+                </div> 
+
+                <div class="col-xs-12 col-sm-1 col-md-1 wow fadeInUp animated" data-wow-delay=".1s">
+                    <i class="fa fa-clock-o size"></i>
+                    <h2>{{robbery}}</h2>
+                    <span>Robbery</span>
+                </div> 
+
+                <div class="col-xs-12 col-sm-1 col-md-1 wow fadeInUp animated" data-wow-delay=".1s">
+                    <i class="fa fa-clock-o size"></i>
+                    <h2>{{rape}}</h2>
+                    <span>Rape</span>
+                </div> 
+
+                <div class="col-xs-12 col-sm-1 col-md-1 wow fadeInUp animated" data-wow-delay=".1s">
+                    <i class="fa fa-clock-o size"></i>
+                    <h2>{{dowry}}</h2>
+                    <span>Dowry</span>
+                </div> 
+
+                <div class="col-xs-12 col-sm-1 col-md-1 wow fadeInUp animated" data-wow-delay=".1s">
+                    <i class="fa fa-clock-o size"></i>
+                    <h2>{{accident}}</h2>
+                    <span>Accident</span>
+                </div> 
+
+                <div class="col-xs-12 col-sm-1 col-md-1 wow fadeInUp animated" data-wow-delay=".1s">
+                    <i class="fa fa-clock-o size"></i>
+                    <h2>{{kidnap}}</h2>
+                    <span>Kidnap</span>
+                </div>
+                <div class="col-xs-12 col-sm-1 col-md-1 wow fadeInUp animated" data-wow-delay=".1s">
+                    <i class="fa fa-clock-o size"></i>
+                    <h2>{{suicide}}</h2>
+                    <span>Suicide</span>
+                </div>
+            </div> 
+            <br>
+            <br>
+            <b><span style="font-size:28px;margin-top:50px">Crime Rate: {{area}}</span></b>
+
+                  
+                  
+                  
+                  
+                  
+
+            </div>
+        </div>   
+        <!-- =============== container end =============== -->		
+    </section>	
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =============== Gallery =============== --> 
+	<!-- =============== jQuery =============== -->
+    <script src="{{ url_for('static', filename = 'assets/js/jquery.js') }}"></script>
+	 <script src="{{ url_for('static', filename = 'assets/js/isotope-docs.min.js') }}"></script>
+    <!-- =============== Bootstrap Core JavaScript =============== -->
+    <script src="{{ url_for('static', filename = 'assets/js/bootstrap.min.js') }}"></script>
+    <!-- =============== Plugin JavaScript =============== -->
+    <script src="{{ url_for('static', filename = 'assets/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/js/jquery.fittext.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/js/wow.min.js') }}"></script> 
+	<!-- =============== owl carousel =============== -->
+    <script src="{{ url_for('static', filename = 'assets/owl-carousel/owl.carousel.js') }}"></script>  
+	<!-- Isotope does NOT require jQuery. But it does make things easier -->
+
+<script src="{{ url_for('static', filename = 'assets/js/baguetteBox.js') }}" async></script>
+<script src="{{ url_for('static', filename = 'assets/js/plugins.js') }}" async></script>
+ 
+    <!-- =============== Custom Theme JavaScript =============== -->
+    <script src="{{ url_for('static', filename = 'assets/js/creative.js') }}">	</script> 
+<script src="{{ url_for('static', filename = 'assets/js/jquery.nicescroll.min.js') }}"></script>
+
+<script>
+  $(document).ready(function() {
+  
+	var nice = $("html").niceScroll();  // The document page (body)
+	
+	$("#div1").html($("#div1").html()+' '+nice.version);
+    
+    $("#boxscroll").niceScroll({cursorborder:"",cursorcolor:"#00F",boxzoom:true}); // First scrollable DIV
+
+    $("#boxscroll2").niceScroll("#contentscroll2",{cursorcolor:"#F00",cursoropacitymax:0.7,boxzoom:true,touchbehavior:true});  // Second scrollable DIV
+    $("#boxframe").niceScroll("#boxscroll3",{cursorcolor:"#0F0",cursoropacitymax:0.7,boxzoom:true,touchbehavior:true});  // This is an IFrame (iPad compatible)
+	
+    $("#boxscroll4").niceScroll("#boxscroll4 .wrapper",{boxzoom:true});  // hw acceleration enabled when using wrapper
+    
+  });
+</script>
+<script>
+window.onload = function() {
+    if(typeof oldIE === 'undefined' && Object.keys)
+        hljs.initHighlighting();
+
+    baguetteBox.run('.baguetteBoxOne');
+    baguetteBox.run('.baguetteBoxTwo');
+    baguetteBox.run('.baguetteBoxThree', {
+        animation: 'fadeIn'
+    });
+    baguetteBox.run('.baguetteBoxFour', {
+        buttons: false
+    });
+    baguetteBox.run('.baguetteBoxFive', {
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+        }
+    });
+};
+</script>
+</body>
+</html>
+
